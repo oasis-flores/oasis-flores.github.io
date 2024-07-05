@@ -21,27 +21,32 @@
             padding: 20px;
         }
         .container {
+            backdrop-filter: blur(5px);
             position: relative;
             z-index: 1;
             max-width: 800px;
-            background-color: #FFF5EE;
+            background-color: rgba(255, 245, 238,0.5);
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
         }
         h1 {
             font-size: 2em;
             margin-bottom: 10px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
         }
         h2 {
             font-size: 1.5em;
             margin-top: 20px;
             margin-bottom: 15px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
         }
         p, li {
-            font-size: 1.2em;
+            font-size: 1.1em;
             line-height: 1.6;
             margin-bottom: 15px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
         }
         ul {
             list-style-type: none;
@@ -51,6 +56,9 @@
             color: #4B0082;
             text-decoration: none;
             font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
         }
         .cta-link {
             color: #ffffff;
@@ -62,19 +70,40 @@
             display: inline-block;
             margin-top: 10px;
         }
+        .cta-link:hover {
+            background-color: #3a006c;
+        }
         .petal {
             position: fixed;
             font-size: 1.5em;
             opacity: 0;
-            animation: fall 5s linear infinite, drift 2s ease-in-out infinite;
+            animation: fall 50s linear infinite, drift 3s ease-in-out infinite, r 3s alternate infinite;
+        }
+        @keyframes r{
+            0%{
+                transform: rotate(-90deg);
+            }
+
+            100%{
+                transform: rotate(90deg);
+            }
         }
         @keyframes fall {
             0% {
-                transform: translateY(-100vh) rotate(0deg);
+                top: -20vh;
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.5;
+            }
+            50% {
                 opacity: 1;
             }
+            80%{
+                opacity: 0.5;
+            }
             100% {
-                transform: translateY(100vh) rotate(360deg);
+                top:120hv;
                 opacity: 0;
             }
         }
@@ -83,47 +112,44 @@
                 transform: translateX(0);
             }
             50% {
-                transform: translateX(20px);
+                transform: translateX(30px);
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>🌸 Bem-vindo à Oasis Flores! 🌸</h1>
+        <h1>Bem-vindo à Oasis Flores!</h1>
+        <h2> 🌸</h2>
         <p>Descubra a beleza das flores em Araraquara!</p>
-        <p>Estamos redirecionando você para o nosso Instagram, onde você encontrará as mais belas flores e arranjos.</p>
-        <p>Se você não for redirecionado automaticamente, clique no botão abaixo:</p>
         <a class="cta-link" href="https://www.instagram.com/rosadodeserto.cassia.7/">Visite nosso Instagram</a>
-        <p>🌷 Obrigado por nos visitar! 🌷</p>
 
-        <h2>Quer entrar em contato?</h2>
         <ul>
-            <li>Instagram: <a href="https://www.instagram.com/rosadodeserto.cassia.7/">@rosadodeserto.cassia.7</a></li>
-            <li>Whatsapp: <a href="https://wa.me/+5516997785678?text=Olá">016 99775-0564</a></li>
+            <li>Whatsapp: <a href="https://wa.me/+5516997785678?text=Olá">(16) 99778-5678</a></li>
             <li>Email: <a href="mailto:oasisrosadd@gmail.com">oasisrosadd@gmail.com</a></li>
-            <li>Endereço: <a href="https://www.google.com/maps/place/Oasis+das+Flores/@-21.8064853,-48.1796292,19.62z/data=!4m6!3m5!1s0x94b8f3eafa7304c3:0x3975c5853423ef76!8m2!3d-21.8065798!4d-48.1795522!16s%2Fg%2F11v08rnsl5?hl=pt-BR&entry=ttu">Av. José Cesarini, nº337. São José. Araraquara</a></li>
+            <li>Endereço: <a href="https://www.google.com/maps/place/Oasis+das+Flores/@-21.8064853,-48.1796292,19.62z/data=!4m6!3m5!1s0x94b8f3eafa7304c3:0x3975c5853423ef76!8m2!3d-21.8065798!4d-48.1795522!16s%2Fg%2F11v08rnsl5?hl=pt-BR&entry=ttu">Av. José Cesarini, nº337. São José. Araraquara.</a></li>
         </ul>
 
-        <h2>Horário de Atendimento</h2>
-        <ul>
-            <li>Segunda a Sexta: 09h00 às 12h00 e 15h00 às 18h00</li>
-            <li>Sábado: 09h00 às 12h00</li>
-        </ul>
     </div>
     <script>
         const flowerIcons = ['🌸', '🌼', '🌺', '🌻', '🌷'];
+        let petalsCount = 0;
 
         function createPetal() {
+            if(petalsCount>100){
+                return;
+            }
+            petalsCount++;
             const petal = document.createElement('div');
             petal.classList.add('petal');
             petal.innerText = flowerIcons[Math.floor(Math.random() * flowerIcons.length)];
             petal.style.left = `${Math.random() * 100}vw`;
-            petal.style.animationDuration = `${Math.random() * 2 + 3}s, ${Math.random() * 2 + 3}s`;
-            petal.style.transform = `rotate(${Math.random() * 360}deg)`;
+            petal.style.top = `${Math.random() * 100}vh`;
+            petal.style.animationDuration = `${Math.random() * 20 + 3}s, ${Math.random() * 2 + 3}s, ${Math.random()*10+3}s`;
             document.body.appendChild(petal);
 
             petal.addEventListener('animationend', () => {
+                petalsCount--;
                 petal.remove();
             });
         }
