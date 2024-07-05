@@ -18,9 +18,12 @@
             height: 100vh;
             margin: 0;
             text-align: center;
+            overflow: hidden;
             padding: 20px;
         }
         .container {
+            position: relative;
+            z-index: 1;
             max-width: 600px;
             background-color: #FFF5EE;
             padding: 20px;
@@ -46,15 +49,49 @@
             display: inline-block;
             margin-top: 10px;
         }
+        .petal {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background-color: rgba(255, 105, 180, 0.7);
+            border-radius: 50%;
+            opacity: 0;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>🌸 Bem-vindo à Nossa Floricultura! 🌸</h1>
+        <h1>🌸 Bem-vindo à Oasis Flores! 🌸</h1>
         <p>Estamos redirecionando você para o nosso Instagram, onde você encontrará as mais belas flores e arranjos.</p>
         <p>Se você não for redirecionado automaticamente, clique no botão abaixo:</p>
         <a class="cta-link" href="https://www.instagram.com/rosadodeserto.cassia.7/">Visite nosso Instagram</a>
         <p>🌷 Obrigado por nos visitar! 🌷</p>
     </div>
+    <script>
+        function createPetal() {
+            const petal = document.createElement('div');
+            petal.classList.add('petal');
+            petal.style.left = `${Math.random() * 100}vw`;
+            petal.style.animationDuration = `${Math.random() * 2 + 3}s`;
+            document.body.appendChild(petal);
+            
+            petal.addEventListener('animationend', () => {
+                petal.remove();
+            });
+        }
+        
+        setInterval(createPetal, 300);
+    </script>
 </body>
 </html>
