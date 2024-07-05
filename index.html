@@ -30,18 +30,18 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         h1 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
+            font-size: 2em;
+            margin-bottom: 10px;
         }
         h2 {
-            font-size: 2em;
+            font-size: 1.5em;
             margin-top: 20px;
             margin-bottom: 15px;
         }
         p, li {
-            font-size: 1.5em;
+            font-size: 1.2em;
             line-height: 1.6;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
         ul {
             list-style-type: none;
@@ -66,7 +66,7 @@
             position: fixed;
             font-size: 1.5em;
             opacity: 0;
-            animation: fall linear infinite, drift linear infinite;
+            animation: fall 5s linear infinite, drift 2s ease-in-out infinite;
         }
         @keyframes fall {
             0% {
@@ -102,7 +102,7 @@
             <li>Instagram: <a href="https://www.instagram.com/rosadodeserto.cassia.7/">@rosadodeserto.cassia.7</a></li>
             <li>Whatsapp: <a href="https://wa.me/+5516997785678?text=Olá">016 99775-0564</a></li>
             <li>Email: <a href="mailto:oasisrosadd@gmail.com">oasisrosadd@gmail.com</a></li>
-            <li>Endereço: <a href="https://www.google.com/maps/place/Oasis+das+Flores/@-21.8064853,-48.1796292,19.62z/data=!4m6!3m5!1s0x94b8f3eafa7304c3:0x3975c5853423ef76!8m2!3d-21.8065798!4d-48.1795522!16s%2Fg%2F11v08rnsl5?hl=pt-BR&entry=ttu">Avenida José Cesarini, nº337. São José. Araraquara - 14800-510</a></li>
+            <li>Endereço: <a href="https://www.google.com/maps/place/Oasis+das+Flores/@-21.8064853,-48.1796292,19.62z/data=!4m6!3m5!1s0x94b8f3eafa7304c3:0x3975c5853423ef76!8m2!3d-21.8065798!4d-48.1795522!16s%2Fg%2F11v08rnsl5?hl=pt-BR&entry=ttu">Av. José Cesarini, nº337. São José. Araraquara</a></li>
         </ul>
 
         <h2>Horário de Atendimento</h2>
@@ -119,8 +119,7 @@
             petal.classList.add('petal');
             petal.innerText = flowerIcons[Math.floor(Math.random() * flowerIcons.length)];
             petal.style.left = `${Math.random() * 100}vw`;
-            petal.style.animationDuration = `${Math.random() * 3 + 2}s`;
-            petal.style.animationDelay = `${Math.random() * 2}s`;
+            petal.style.animationDuration = `${Math.random() * 2 + 3}s, ${Math.random() * 2 + 3}s`;
             petal.style.transform = `rotate(${Math.random() * 360}deg)`;
             document.body.appendChild(petal);
 
