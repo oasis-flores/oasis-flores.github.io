@@ -23,9 +23,9 @@
         .container {
             position: relative;
             z-index: 1;
-            max-width: 600px;
+            max-width: 800px;
             background-color: #FFF5EE;
-            padding: 20px;
+            padding: 30px;
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
@@ -33,10 +33,24 @@
             font-size: 2.5em;
             margin-bottom: 20px;
         }
-        p {
+        h2 {
+            font-size: 2em;
+            margin-top: 20px;
+            margin-bottom: 15px;
+        }
+        p, li {
             font-size: 1.5em;
             line-height: 1.6;
             margin-bottom: 20px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        a {
+            color: #4B0082;
+            text-decoration: none;
+            font-weight: bold;
         }
         .cta-link {
             color: #ffffff;
@@ -50,12 +64,9 @@
         }
         .petal {
             position: fixed;
-            width: 20px;
-            height: 20px;
-            background-color: rgba(255, 105, 180, 0.7);
-            border-radius: 50%;
+            font-size: 1.5em;
             opacity: 0;
-            animation: fall linear infinite;
+            animation: fall linear infinite, drift linear infinite;
         }
         @keyframes fall {
             0% {
@@ -67,29 +78,56 @@
                 opacity: 0;
             }
         }
+        @keyframes drift {
+            0%, 100% {
+                transform: translateX(0);
+            }
+            50% {
+                transform: translateX(20px);
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>🌸 Bem-vindo à Oasis Flores! 🌸</h1>
-        <p>Estamos redirecionando você para o nosso Instagram, onde você encontrará as mais belas flores e arranjos.</p>
-        <p>Se você não for redirecionado automaticamente, clique no botão abaixo:</p>
-        <a class="cta-link" href="https://www.instagram.com/rosadodeserto.cassia.7/">Visite nosso Instagram</a>
+        <p>Descubra a beleza das flores em Araraquara!</p>
+        
         <p>🌷 Obrigado por nos visitar! 🌷</p>
+
+        <h2>Quer entrar em contato?</h2>
+        <ul>
+            <li>Confira nosso Instagram: <a href="https://www.instagram.com/rosadodeserto.cassia.7/">@rosadodeserto.cassia.7</a></li>
+            <li>Whatsapp: <a href="https://wa.me/+5516997785678?text=Olá">(16) 99778-5678</a></li>
+            <li>Email: <a href="mailto:oasisrosadd@gmail.com">oasisrosadd@gmail.com</a></li>
+            <li>Endereço: <a href="https://www.google.com/maps/place/Oasis+das+Flores/@-21.8064853,-48.1796292,19.62z/data=!4m6!3m5!1s0x94b8f3eafa7304c3:0x3975c5853423ef76!8m2!3d-21.8065798!4d-48.1795522!16s%2Fg%2F11v08rnsl5?hl=pt-BR&entry=ttu">Avenida José Cesarini, nº337. São José. Araraquara - 14800-510</a></li>
+        </ul>
+
+        <h2>Horário de Atendimento</h2>
+        <ul>
+            <li>Segunda a Sexta: 09h00 às 12h00 e 15h00 às 18h00</li>
+            <li>Sábado: 09h00 às 12h00</li>
+        </ul>
+
+          <a class="cta-link" href="https://www.instagram.com/rosadodeserto.cassia.7/">Prosseguir para nosso Instragram!</a>
     </div>
     <script>
+        const flowerIcons = ['🌸', '🌼', '🌺', '🌻', '🌷'];
+
         function createPetal() {
             const petal = document.createElement('div');
             petal.classList.add('petal');
+            petal.innerText = flowerIcons[Math.floor(Math.random() * flowerIcons.length)];
             petal.style.left = `${Math.random() * 100}vw`;
-            petal.style.animationDuration = `${Math.random() * 2 + 3}s`;
+            petal.style.animationDuration = `${Math.random() * 2 + 3}s, ${Math.random() * 2 + 3}s`;
+            petal.style.transform = `rotate(${Math.random() * 360}deg)`;
             document.body.appendChild(petal);
-            
+
             petal.addEventListener('animationend', () => {
                 petal.remove();
             });
         }
-        
+
         setInterval(createPetal, 300);
     </script>
 </body>
